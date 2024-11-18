@@ -1,0 +1,9 @@
+fastapi[all]
+uvicorn
+sqlalchemy
+alembic
+asyncpg
+fastapi-cache2[redis]
+celery
+flower
+pytest-asyncio
