@@ -1,15 +1,18 @@
-from sqlalchemy import create_engine, MetaData
+from sqlalchemy import  MetaData, BIGINT
 from sqlalchemy.ext.declarative import declarative_base, DeclarativeMeta
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, DeclarativeBase
 from typing import AsyncGenerator
-from sqlalchemy import MetaData
+import datetime
 
 from config import settings
 
 
 Base: DeclarativeMeta = declarative_base()
 metadata = MetaData()
+
+class Base(DeclarativeBase):
+    pass
 
 engine = create_async_engine(
     settings.DATABASE_URL_async,
