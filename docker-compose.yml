@@ -20,7 +20,9 @@ services:
 
   postgres:
     container_name: postgres_container
-    image: postgres:15-alpine
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     ports:

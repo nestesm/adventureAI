@@ -8,11 +8,12 @@ import datetime
 from config import settings
 
 
-Base: DeclarativeMeta = declarative_base()
-metadata = MetaData()
-
 class Base(DeclarativeBase):
-    pass
+    type_annotation_map = {
+        BIGINT: int,
+        datetime.datetime: datetime.datetime,
+    }
+    metadata = MetaData()
 
 engine = create_async_engine(
     settings.DATABASE_URL_async,

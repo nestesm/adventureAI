@@ -9,12 +9,12 @@ class Settings(BaseSettings):
     DATABASE_USER: str = os.getenv('DATABASE_USER')
     DATABASE_PASSWORD: str = os.getenv('DATABASE_PASSWORD')
     DATABASE_NAME: str = os.getenv('DATABASE_NAME')
-    SECRET_JWT: str = os.getenv(validation_alias='SECRET_JWT')
-    SECRET_PASS: str = os.getenv(validation_alias='SECRET_PASS')
-    SMTP_PASSWORD: str = os.getenv(validation_alias='SMTP_PASSWORD')
-    REDIS_PASSWORD: str = os.getenv(validation_alias='REDIS_PASSWORD')
-    REDIS_USER: str = os.getenv(validation_alias='REDIS_USER')
-    REDIS_USER_PASSWORD: str = os.getenv(validation_alias='REDIS_USER_PASSWORD')
+    SECRET_JWT: str = os.getenv('SECRET_JWT')
+    SECRET_PASS: str = os.getenv('SECRET_PASS')
+    SMTP_PASSWORD: str = os.getenv('SMTP_PASSWORD')
+    REDIS_PASSWORD: str = os.getenv('REDIS_PASSWORD')
+    REDIS_USER: str = os.getenv('REDIS_USER')
+    REDIS_USER_PASSWORD: str = os.getenv('REDIS_USER_PASSWORD')
     
     @property
     def DATABASE_URL_async(self) -> str:
@@ -26,4 +26,3 @@ class Settings(BaseSettings):
 
    
 settings = Settings() 
-DATABASE_URL: str = f'postgresql+asyncpg://{settings.DATABASE_USER}:{settings.DATABASE_PASSWORD}@{settings.DATABASE_HOST}:{settings.DATABASE_PORT}/{settings.DATABASE_NAME}'
