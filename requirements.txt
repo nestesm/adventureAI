@@ -7,3 +7,5 @@ fastapi-cache2[redis]
 celery
 flower
 pytest-asyncio
+GeoAlchemy2
+greenlet

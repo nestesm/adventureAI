@@ -1,16 +1,16 @@
 import uuid
-from sqlalchemy import TIMESTAMP, JSON
 from sqlalchemy.orm import Mapped, mapped_column, validates
 from sqlalchemy.dialects.postgresql import UUID
-from enum import Enum
 
-from database import Base, metadata
+from core.database import Base
 
 
 class UserModel(Base):
-    id: Mapped[uuid.UUID] = mapped_column(UUID, primary_key=True, index=True)
+    __tablename__ = 'users'
+    
+    id: Mapped[uuid.UUID] = mapped_column(UUID, primary_key=True)
     name: Mapped[str] = mapped_column(nullable=False)
-    email: Mapped[str] = mapped_column(nullable=False)
+    email: Mapped[str] = mapped_column(nullable=False, index=True)
     hashed_password: Mapped[str] = mapped_column(nullable=False)
     is_active: Mapped[bool] = mapped_column(nullable=True)
     is_verified: Mapped[bool] = mapped_column(nullable=False)
