@@ -8,7 +8,7 @@ from core.database import Base
 class UserModel(Base):
     __tablename__ = 'users'
     
-    id: Mapped[uuid.UUID] = mapped_column(UUID, primary_key=True)
+    id: Mapped[uuid.UUID] = mapped_column(UUID, primary_key=True, index=True, default=uuid.uuid4)
     name: Mapped[str] = mapped_column(nullable=False)
     email: Mapped[str] = mapped_column(nullable=False, index=True)
     hashed_password: Mapped[str] = mapped_column(nullable=False)
