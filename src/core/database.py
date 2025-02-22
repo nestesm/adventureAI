@@ -24,6 +24,12 @@ engine = create_async_engine(
 
 async_session_maker = sessionmaker(engine, class_=AsyncSession) 
 
-async def get_async_session()-> AsyncGenerator[AsyncSession, None]:
+async def get_async_session() -> AsyncGenerator[AsyncSession, None]:
     async with async_session_maker() as session:
-        yield session
+        try:
+            yield session
+        except:
+            await session.rollback()
+            raise
+        finally:
+            await session.close()

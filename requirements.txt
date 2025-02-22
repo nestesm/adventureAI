@@ -9,3 +9,4 @@ flower
 pytest-asyncio
 GeoAlchemy2
 greenlet
+argon2-cffi
