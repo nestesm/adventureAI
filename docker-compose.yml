@@ -1,22 +1,22 @@
 version: '3.9'
 
 services:
-  # backend:
-  #   build:
-  #     context: ./backend
-  #     dockerfile: Dockerfile
-  #   command: bash -c " 
-  #     cd src &&
-  #     uvicorn run:app
-  #     --host 0.0.0.0 --port 8989
-  #     --reload"       
-  #   volumes:
-  #     - backend_volume:/opt
-  #   ports:
-  #     - "8989:8989"
-  #   depends_on:
-  #     - postgres
-  #     - redis
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c " 
+      cd src &&
+      uvicorn main:app
+      --host 0.0.0.0 --port 8989
+      --reload"       
+    volumes:
+      - backend_volume:/opt
+    ports:
+      - "8989:8989"
+    depends_on:
+      - postgres
+      - redis
 
   postgres:
     container_name: postgres_container
@@ -64,6 +64,6 @@ services:
 
       
 volumes:
-  # backend_volume:
+  backend_volume:
   postgres_data:
   redis_data:
